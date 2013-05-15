@@ -1,0 +1,44 @@
+<div class="row {{visibility}}">
+	<div class="span4">
+		<form>
+			<label>Duration</label>
+			<input type="number" step="any" class="input-xlarge input-block-level">
+			<label>Task</label>
+			<input type="text" class="input-xlarge input-block-level">
+			<input type="submit" class="btn" value="Add">
+		</form>
+	</div>
+	<div class="span8">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th width="100">Duration</th>
+					<th>Task</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each log}}
+				<tr>
+					<td><span class="badge">{{time}}</span></td>
+					<td>{{task}}</td>
+					<td><a href="#" class="pull-right delete"><i class="icon-remove"></i></td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="100">Total</th>
+					<th>Remaining</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span class="badge">{{total}}</span></td>
+					<td><span class="badge">{{remaining}}</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
