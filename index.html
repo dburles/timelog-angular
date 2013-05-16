@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="timelog">
 
 <head>
 	<meta charset="UTF-8">
@@ -7,6 +7,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css">
 </head>
 
 <body>
@@ -15,20 +17,26 @@
 			<div class="navbar-inner">
 				<div class="container-fluid pull-right">
 					<ul class="nav">
-						<li class="{{active_main}}">
-							<a href="#/home">Home</a> 
+						<li class="">
+							<a href="/#/home">Home</a> 
 						</li>
-						<li class="{{active_config}}">
-							<a href="#/config">Config</a>
+						<li class="">
+							<a href="/#/config">Config</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
-	
+		<div ng-controller="MainCtrl" ng-view></div>
 
 	</div>
 </body>
 
+
+<script src="/angular/angular.min.js"></script>
+<script src="/underscore/underscore-min.js"></script>
+<script src="/jquery/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/app.js"></script>
 </html>
