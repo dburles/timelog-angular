@@ -36,8 +36,10 @@ angular.module('timelog', [])
 			goal: function() {
 				return goal;
 			},
-			saveGoal: function(data) {
-				goal = data;
+			saveGoal: function(newGoal) {
+			    if (goal != newGoal) {
+			        goal = newGoal;
+			    }
 			}
 		}
 	})
