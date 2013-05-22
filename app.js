@@ -1,11 +1,12 @@
 angular.module('timelog', [])
-	.config(function($routeProvider) {
+	.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', { controller: 'MainCtrl', templateUrl: 'main.html'})
-			.when('/config', { controller: 'MainCtrl', templateUrl: 'config.html'})
+			.when('/config', { controller: 'ConfigCtrl', templateUrl: 'config.html'})
 			.otherwise({ redirectTo: '/' });
+		$locationProvider.html5Mode(true);
 	})
-	.service('timelogService', function() {
+	.service('timelogService', function($http) {
 		var logs = [];
 		var goal = 6;
 
@@ -15,6 +16,15 @@ angular.module('timelog', [])
 			},
 			add: function(data) {
 				logs.push(data);
+				/*
+				$http.post('/api/log/add', data)
+					.success(function(data, status, headers, config) {
+						console.log(data);
+					})
+					.error(function(data, status, headers, config) {
+						//alert("Error: " + status);
+					});
+				*/
 			},
 			getTotal: function() {
 				var total = 0;
@@ -26,9 +36,10 @@ angular.module('timelog', [])
 			goal: function() {
 				return goal;
 			},
-			saveGoal: function(goal) {
-				goal = goal;
-				console.log(goal);
+			saveGoal: function(newGoal) {
+			    if (goal != newGoal) {
+			        goal = newGoal;
+			    }
 			}
 		}
 	})
@@ -47,12 +58,16 @@ angular.module('timelog', [])
 			$scope.task = "";
 			$('#time').focus(); // must be an angular way?
 		}
-		$scope.save = function() {
-			timelogService.saveGoal($scope.goal);
-			alert("Saved.");
-		}
 
 		$scope.total = timelogService.getTotal();
 		$scope.remaining = parseFloat($scope.goal) - $scope.total;
+	}])
+	.controller('ConfigCtrl', ['$scope', 'timelogService', function($scope, timelogService) {
+		$scope.goal = timelogService.goal();
+
+		$scope.save = function() {
+			timelogService.saveGoal($scope.goal);
+			//alert("Saved.");
+		}
 	}]);
 
