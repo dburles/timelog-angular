@@ -16,13 +16,15 @@ angular.module('timelog', [])
 			},
 			add: function(data) {
 				logs.push(data);
+				/*
 				$http.post('/api/log/add', data)
 					.success(function(data, status, headers, config) {
 						console.log(data);
 					})
 					.error(function(data, status, headers, config) {
-						alert("Error: " + status);
+						//alert("Error: " + status);
 					});
+				*/
 			},
 			getTotal: function() {
 				var total = 0;
@@ -34,8 +36,8 @@ angular.module('timelog', [])
 			goal: function() {
 				return goal;
 			},
-			saveGoal: function(goal) {
-				goal = goal;
+			saveGoal: function(data) {
+				goal = data;
 			}
 		}
 	})
@@ -63,7 +65,7 @@ angular.module('timelog', [])
 
 		$scope.save = function() {
 			timelogService.saveGoal($scope.goal);
-			alert("Saved.");
+			//alert("Saved.");
 		}
 	}]);
 
