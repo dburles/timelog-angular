@@ -37,7 +37,7 @@ angular.module('timelog', [])
 				return goal;
 			},
 			saveGoal: function(newGoal) {
-			    if (goal != newGoal) {
+			    if (goal !== newGoal) {
 			        goal = newGoal;
 			    }
 			}
