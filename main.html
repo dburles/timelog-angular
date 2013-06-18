@@ -20,7 +20,7 @@
 				<tr ng-repeat="log in logs | backwards">
 					<td><span class="badge">{{log.time}}</span></td>
 					<td>{{log.task}}</td>
-					<td><a href="#" class="pull-right delete"><i class="icon-remove"></i></td>
+					<td><a ng-click="remove($index)" class="pull-right delete"><i class="icon-remove"></i></td>
 				</tr>
 			</tbody>
 		</table>
