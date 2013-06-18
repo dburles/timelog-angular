@@ -70,7 +70,7 @@ angular.module('timelog', [])
 		}
 
 		$scope.remove = function(log) {
-			// XXX I believe this is broken somehow because of the 'reverse' filter
+			// XXX I believe this is broken somehow because of the 'backwards' filter
 			$scope.logs.splice(log, 1);
 		}
 
